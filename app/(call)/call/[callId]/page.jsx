@@ -19,6 +19,8 @@ export default async function CallPage({ params }) {
 
   const { token, isInterviewer, currentUser, booking } = result;
 
+  console.log(booking.interviewer.categories)
+
   return (
     <CallRoom
       callId={callId}

@@ -114,7 +114,7 @@ model Availability {
 
 /*intervieweeId → Foreign Key
 ✅ "IntervieweeBookings" → Relation name (chosen by you)
-✅ interviewee → Relation field (lets you access the related User object)same for interviewerId and interviewer */
+✅ interviewee → Relation field (lets you access the related User object)using include (see appointment) same for interviewerId and interviewer */
 model Booking {
   id             String        @id @default(uuid())
   intervieweeId  String

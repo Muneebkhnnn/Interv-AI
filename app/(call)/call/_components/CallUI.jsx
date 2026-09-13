@@ -51,9 +51,9 @@ export default function CallUI({
       if (call) {
         const isRecording = call.state?.recording;
         if (isRecording) {
-          await call.stopRecording().catch(() => {});
+          await call.stopRecording().catch(() => { });
         }
-        await call.leave().catch(() => {});
+        await call.leave().catch(() => { });
       }
     } finally {
       onLeave();
@@ -90,7 +90,7 @@ export default function CallUI({
       .catch(console.error);
 
     return () => {
-      channel.stopWatching().catch(() => {});
+      channel.stopWatching().catch(() => { });
     };
   }, [chatClient, callId, booking]);
 
@@ -102,6 +102,11 @@ export default function CallUI({
     );
   }
 
+  console.log({
+    currentUserId: currentUser.id,
+    storedInterviewerId: booking.interviewer.clerkUserId,
+    storedIntervieweeId: booking.interviewee.clerkUserId,
+  });
   return (
     <div className="min-h-[92vh] bg-[#0a0a0b] flex flex-col overflow-hidden">
       {/* Top bar */}
@@ -143,11 +148,10 @@ export default function CallUI({
             <button
               type="button"
               onClick={() => setActiveTab("chat")}
-              className={`flex-1 flex items-center justify-center gap-2 py-3 text-xs font-medium transition-colors ${
-                activeTab === "chat"
-                  ? "text-amber-400 border-b-2 border-amber-400"
-                  : "text-stone-500 hover:text-stone-300"
-              }`}
+              className={`flex-1 flex items-center justify-center gap-2 py-3 text-xs font-medium transition-colors ${activeTab === "chat"
+                ? "text-amber-400 border-b-2 border-amber-400"
+                : "text-stone-500 hover:text-stone-300"
+                }`}
             >
               <MessageSquare size={13} />
               Chat
@@ -158,11 +162,10 @@ export default function CallUI({
               <button
                 type="button"
                 onClick={() => setActiveTab("ai")}
-                className={`flex-1 flex items-center justify-center gap-2 py-3 text-xs font-medium transition-colors ${
-                  activeTab === "ai"
-                    ? "text-amber-400 border-b-2 border-amber-400"
-                    : "text-stone-500 hover:text-stone-300"
-                }`}
+                className={`flex-1 flex items-center justify-center gap-2 py-3 text-xs font-medium transition-colors ${activeTab === "ai"
+                  ? "text-amber-400 border-b-2 border-amber-400"
+                  : "text-stone-500 hover:text-stone-300"
+                  }`}
               >
                 <Sparkles size={13} />
                 AI Questions
